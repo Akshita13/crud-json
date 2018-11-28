@@ -1,0 +1,35 @@
+<form [formGroup]="studentsForm"  novalidate>
+
+  <label>Firstname:</label>
+  <input type="text" formControlName="firstName"><br>
+
+
+  <label>Lastname:</label>
+  <input type="text" formControlName="lastName"><br>
+
+
+  <div formGroupName="address"><br>
+    <h4>Address:</h4>
+
+    <label>street:</label>
+    <input type="text" formControlName="street"><br>
+
+    <label>city:</label>
+    <input type="text" formControlName="city"><br>
+
+    <label>state:</label>
+    <input type="text" formControlName="state"><br>
+
+  </div>
+  <div formArrayName="subjects">
+   <h4>subjects:</h4><button (click)="addSubject()">Add</button>
+   <div *ngFor="let subject of subjects.controls;let i=index;">
+     <label>index:{{i}}</label>
+     <input type="text" [formControlName]='i'>
+
+   </div>
+  </div>
+  <button (click)="addStudent()">addStudent</button>
+
+</form>
+<p>{{studentsForm.value|json}}</p>

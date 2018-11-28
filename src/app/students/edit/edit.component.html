@@ -1,0 +1,23 @@
+<form [formGroup]="studentForm" novalidate>
+  <label>firstName</label>
+  <input type="text" formControlName="firstName">
+  <br>
+  <label >lastName</label>
+  <input type="text" formControlName="lastName"><br>
+  <label>address</label>
+  <div formGroupName="address">
+    <label >street</label>
+    <input type="text" formControlName="street"><br>
+   
+    <label>City</label>
+    <input type="text" formControlName="city"><br>
+    <label>State</label>
+    <input type="text" formControlName="state">
+  </div><br>
+  <div formArrayName="subjects">
+    <div *ngFor="let subject of subjects.controls;let i=index;">
+      <label >{{i}}</label> <input type="text" [formControlName]="i">
+    </div>
+  </div>
+  <button (click)="updateStudent()">Update</button>
+</form>

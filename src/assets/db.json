@@ -1,0 +1,17 @@
+{
+  "Students": [
+    {
+      "id": 1,
+      "firstName": "akshita",
+      "lastName": "kapadia",
+      "address": {
+        "street": "motabazar",
+        "city": "valsad",
+        "state": "gujarat"
+      },
+      "subjects": [
+        "maths,science,english,patel"
+      ]
+    }
+  ]
+}
