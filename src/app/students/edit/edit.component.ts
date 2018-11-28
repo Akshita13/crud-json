@@ -20,52 +20,70 @@ export class EditComponent implements OnInit {
     this.loadForm();
     this.editStudent();
   }
-  public editStudent() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.studentService.editStudent(id).subscribe((student) => {
-      this.dataLoad(student);
-      console.log(this.sub);
-    })
-  }
-  public loadForm() {
-    this.studentForm = this.fb.group({
-      id: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: this.fb.group({
-        street: ['', Validators.required],
-        city: ['', Validators.required],
-        state: ['', Validators.required]
-      }),
-      subjects: this.fb.array([
+public editStudent():void{
+ const id=+ this.route.snapshot.paramMap.get('id');
+  this.studentService.editStudent(id).subscribe((student)=>
+    this.dataLoad(student)
+  )
+}
+public loadForm()
+{
+  this.studentForm=this.fb.group(
+    {
+      id:[""],
+      firstName:["",Validators.required],
+      lastName:["",Validators.required],
+      address:this.fb.group(
+        {
+          street:["",Validators.required],
+          city:["",Validators.required],
+          state:["",Validators.required]
+        }
+      ),
+      subjects:this.fb.array([
         this.fb.control('')
       ])
-    })
-  }
-  public dataLoad(student: Students) {
-    this.studentForm.patchValue({
-      id: student.id,
-      firstName: student.firstName,
-      lastName: student.lastName,
-      address: {
-        street: student.address.street,
-        city: student.address.city,
-        state: student.address.state
+    }
+  )
+
+}
+public dataLoad(student:Students)
+{
+  this.studentForm.patchValue(
+    {
+      id:student.id,
+      firstName:student.firstName,
+      lastName:student.lastName,
+      address:{
+        street:student.address.street,
+        city:student.address.city,
+        state:student.address.state
       },
-      subjects:[student.subjects.forEach(element => {
-        this.sub.push(element);
-        
-        // this.subjects.push(this.fb.control())
-      })]
-    })
-  }
-  get subjects(){
-    return this.studentForm.get('subjects') as FormArray;
-  }
- public updateStudent(){
-    this.studentService.updateStudent(this.studentForm.value).subscribe(()=>{
-      this.router.navigate(['view'])
-    })
-  }
+      subjects:[student.subjects]
+    }
+  )
+}
+
+public updateStudent():void
+{
+  this.studentService.updateStudent(this.studentForm.value).subscribe(()=>{
+    this.router.navigate(['view'])
+  })
+}
+
+get subjects()
+{
+  return this.studentForm.get('subjects') as FormArray
+}
+
+addSubject()
+{
+  return this.subjects.push(this.fb.control(''))
+}
+
+addStudent():void{
+  this.studentService.addStudent(this.studentForm.value).subscribe();
+}
+ 
   
 }

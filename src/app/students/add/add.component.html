@@ -22,13 +22,13 @@
 
   </div>
   <div formArrayName="subjects">
-   <h4>subjects:</h4><button (click)="addSubject()">Add</button>
-   <div *ngFor="let subject of subjects.controls;let i=index;">
-     <label>index:{{i}}</label>
-     <input type="text" [formControlName]='i'>
-
-   </div>
+      <h4>subjects:</h4><button (click)="addSubject()">Add</button>
+    <div *ngFor="let subject of subjects.controls;let i=index">
+   <input type="text" [formControlName]="i">
   </div>
+  </div>
+ 
+ 
   <button (click)="addStudent()">addStudent</button>
 
 </form>

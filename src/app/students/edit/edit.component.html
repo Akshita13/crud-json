@@ -15,6 +15,7 @@
     <input type="text" formControlName="state">
   </div><br>
   <div formArrayName="subjects">
+      <h4>subjects:</h4><button (click)="addSubject()">Add</button>
     <div *ngFor="let subject of subjects.controls;let i=index;">
       <label >{{i}}</label> <input type="text" [formControlName]="i">
     </div>

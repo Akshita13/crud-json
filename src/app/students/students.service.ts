@@ -17,8 +17,8 @@ export class StudentsService {
     return this.http.get<Students>(url)
   }
 
-  public deleteStudents(id: number): Observable<Students[]> {
-    return this.http.delete<Students[]>(this.url + "/" + id);
+  public deleteStudents(id: number): Observable<Students> {
+    return this.http.delete<Students>(this.url + "/" + id);
   }
   public addStudent(student: Students): Observable<Students> {
     return this.http.post<Students>(this.url, student)

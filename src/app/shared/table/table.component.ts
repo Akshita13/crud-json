@@ -7,19 +7,23 @@ import { Students } from '../../students/students.model';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  @Input() students: Students[];
+  @Input() students:Students[];
   @Output() studentDeleteClicked=new EventEmitter;
   @Output() studentEditClicked=new EventEmitter;
   constructor() { }
 
   ngOnInit() {
   }
- public deleteStudent(id:number) : void{
+  public editStudent(id:number):void{
+    this.studentEditClicked.emit(id);
+  }
+  public deleteStudents(id:number):void{
+   
+   
+    
     this.studentDeleteClicked.emit(id);
-    
   }
- public editStudent(id:number):void {
-   this.studentEditClicked.emit(id);
+ 
     
-  }
 }
+

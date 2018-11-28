@@ -1,4 +1,2 @@
-
-<app-table [students]='students' (studentDeleteClicked)="studentDelete($event)" 
-(studentEditClicked)="studentEdit($event)"
-></app-table>
+<app-table [students]="students" (studentEditClicked)="editStudent($event)"
+(studentDeleteClicked)="deleteStudents($event)"></app-table>

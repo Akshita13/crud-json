@@ -29,17 +29,21 @@ export class AddComponent implements OnInit {
         ),
         subjects: this.fb.array(
           [
-              
+              this.fb.control('')
           ]
         )
       }
     )
   }
-  get subjects() {
-    return this.studentsForm.get('subjects') as FormArray;
+ 
+  get subjects()
+  {
+    return this.studentsForm.get('subjects') as FormArray
   }
-  addSubject() {
-    this.subjects.push(this.fb.control(''));
+
+  addSubject()
+  {
+    return this.subjects.push(this.fb.control(''))
   }
 
   addStudent():void{

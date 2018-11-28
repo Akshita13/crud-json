@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { Students } from '../students.model';
 import { Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-view',
@@ -19,6 +19,7 @@ export class ViewComponent implements OnInit {
   }
 
   public deleteStudents(id:number):void{
+  
     this.studentsService.deleteStudents(id).subscribe();
     this.getStudents();
   }
@@ -27,12 +28,10 @@ export class ViewComponent implements OnInit {
       student=>{this.students=student}
     )
   }
-  public studentDelete(id:number):void{
-    this.deleteStudents(id);
-  }
-  public studentEdit(id:number):void{
+  public editStudent(id:number):void{
     this.router.navigate(['edit/'+id]);
   }
+  
 
 
 }
